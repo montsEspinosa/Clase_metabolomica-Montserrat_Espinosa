@@ -1,0 +1,16 @@
+#Montserrat Espinosa García
+#Metabolómica
+#Grupo 1 (2:30 pm)
+#Tarea 1: dataframe en R
+
+Película <-c("Anora", "The Brutalist", "Flow", "Emilia Pérez", "Wicked", "Dune: Part Two", "I´m Still Here")
+Premios_Oscar_2025 <-c("Mejor Película, Mejor Director, Mejor Actriz, Mejor Guión Original, Mejor Montaje", "Mejor Actor, Mejor Fotografía, Mejor Banda Sonora", "Mejor Película de Animación", "Mejor Actriz de Reparto, Mejor Canción Original","Mejor Diseño de Vestuario, Mejor Diseño de Producción", "Mejor Sonido, Mejores Efectos Visuales", "Mejor Película Internacional")
+Mes_de_estreno <-c("Enero", "Diciembre", "Diciembre", "Mayo", "Noviembre", "Marzo", "Febrero")
+Recaudación_mundial_estimada <-c(41000000, 41400000, 728000000, 714000000, 20000000, 29900000, 30000000)
+
+#los espacios en los nombres se marcan como guión bajo _
+
+Oscars <- data.frame(Película, Premios_Oscar_2025, Mes_de_estreno, Recaudación_mundial_estimada)
+
+Oscars
+View(Oscars)
