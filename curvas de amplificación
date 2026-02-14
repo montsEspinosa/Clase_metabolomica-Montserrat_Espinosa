@@ -1,0 +1,34 @@
+install.packages("pacman")
+#es un paquete que llama a otros paquetes y si no están los instala
+
+library ("pacman")
+#esta función llama al paquete instalado
+
+p_load("ggplot2", "dplyr", "vroom")
+#p_load es una función exclusiva de pacman, si no está instalado no se desplega el menú
+#ggplot es para gráficas
+#dplyr es para facilitar el manejo de datos
+#vroom es para llamar repositorios
+
+Datos_curva <- vroom(file="https://raw.githubusercontent.com/ManuelLaraMVZ/resultados_PCR_practica/refs/heads/main/Amplif_grupo1_17022025.csv")
+#para asignar es Alt + "-", da la flecha <- 
+head(Datos_curva) #solo para que me de los 6 primeros datos
+
+Curva_1 <- Datos_curva %>% #(Ctrl + Shift + "M") el nuevo objeto va a tener una asignación a partir de la base de datos XX, y le hacemos lo siguiente
+  select(1,7) 
+Curva_1 #necesito llamarlo
+#entre los paréntesis de select puede ir el número de las columnas o el nombre (en comillas y respetando mayúsculas y minúsculas), separadas por comas
+#o entre los paréntesis se pueden poner las que no quiero, con un menos antes del número
+
+Grafica_curva <- ggplot(Curva_1,
+                        mapping = aes(x = Cycle,
+                                      y = F1))+ #el + es como el %>% para ggplot en vez de para dplyr
+  geom_point()+ #gráfica de puntos (_point)
+  geom_line(color="red", size=1.2) #gráfica de líneas (_line), en los paréntesis van las características
+Grafica_curva
+
+Grafica_curva_2 <- Grafica_curva+
+  labs(x="ciclos", y="fluorescencia", title="Creado por: Montse Espinosa", subtitle="Gráfica F1", caption="Ejercicio 3")+
+  #labs = labels
+  theme_classic()
+Grafica_curva_2
